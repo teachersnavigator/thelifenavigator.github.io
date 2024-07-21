@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Science Quiz - Pretest</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 18px;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+        }
+        .button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        h2 {
+            color: red;
+            font-size: 24px;
+            text-align: center;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 4px 0;
+            box-sizing: border-box;
+            font-size: 18px;
+            font-family: 'Times New Roman', serif;
+        }
+        .submit-button, .start-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 24px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            margin: 10px auto;
+            display: block;
+        }
+        .login-button {
+            background-color: #2196F3;
+            color: white;
+            padding: 10px 24px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            margin: 10px auto;
+            display: block;
+        }
+        .timer {
+            font-size: 24px;
+            color: white;
+            background-color: black;
+            border: 2px solid #4CAF50;
+            padding: 10px;
+            width: 150px;
+            text-align: center;
+            margin: 20px auto;
+            border-radius: 10px;
+            display: none;
+        }
+        .result-window {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            color: black;
+            font-size: 20px;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: red;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            border: none;
+        }
+        .no-copy {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .questions-section {
+            display: none;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .instructions {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .explanation {
+            margin-top: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        .submit-button img {
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+        }
+        .left-image {
+            display: block;
+            margin: 0 auto;
+            width: 250px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="no-copy" oncopy="return false" oncut="return false" onpaste="return false">
+
+<header>
+    <img src="https://i0.wp.com/thelifenavigator.com/wp-content/uploads/2024/07/KIDSNAVIGATOR0001-0360-ezgif.com-video-to-gif-converter.gif?resize=600%2C338&ssl=1" alt="Logo" style="height: 200px;">
+    <div>Kids Navigator Welcomes You to IIT/NEET Skilling Program - Class-7</div>
+</header>
+
+<button class="button" onclick="window.location.href='http://www.thelifenavigator.com'">Back to Home Page</button>
+<img src="https://i0.wp.com/thelifenavigator.com/wp-content/uploads/2024/07/DALL%C2%B7E-2024-07-18-23.13.26-A-golden-globe-with-a-blue-and-gold-globe-on-a-metallic-background.-Below-the-globe-is-a-large-button-with-the-text-Science-in-a-large-font-embedde.webp?fit=1024%2C1024&ssl=1" alt="Science" class="left-image">
+
+<h2>Chapter-1 (Nutrition in Plants) Quiz</h2>
+
+<div class="instructions">
+    <p>Please read the instructions carefully before starting the test:</p>
+    <ul>
+        <li>Total Marks: 45</li>
+        <li>Maximum Time Allowed: 15 minutes</li>
+        <li>Answer all the questions to the best of your ability.</li>
+    </ul>
+    <p>
+        Parents should make sure that their kids attempt the quiz and share and discuss the performance with teachers by sharing their results. Skilling improves the chances of becoming competent in future exams like IIT and NEET, which are required for medical and engineering admissions.
+    </p>
+    <p>
+        <strong>Scoring Rules:</strong><br>
+        <strong>Expert Level (3 marks each):</strong> Questions 1 to 10<br>
+        <strong>Intermediate Level (2 marks each):</strong> Questions 11 to 15<br>
+        <strong>Basic Level (1 mark each):</strong> Questions 16 to 20<br>
+    </p>
+</div>
+
+<!-- Login Form -->
+<div class="container">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <div class="terms-checkbox">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">I accept the <a href="https://thelifenavigator.com/privacy-policy-for-the-life-navigator" target="_blank">terms and conditions</a></label>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <input type="submit" class="login-button" value="Login">
+    </form>
+</div>
+
+<button class="start-button" id="startTestButton" style="display: none;" onclick="startTest()">Start Test</button>
+
+<div class="questions-section" id="questions-section">
+    <div class="timer" id="timer">15:00</div>
+    <h2>Science Chapter-1 Test</h2>
+    <form id="science-quiz-form" onsubmit="return submitTest(event)">
+        <h3>Science Questions</h3>
+        <ol>
+            <li>Which pigment is responsible for the green color in plants?
+                <select name="q1" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Chlorophyll">Chlorophyll</option>
+                    <option value="Carotene">Carotene</option>
+                    <option value="Anthocyanin">Anthocyanin</option>
+                    <option value="Xanthophyll">Xanthophyll</option>
+                </select>
+            </li>
+            <li>What is the main function of stomata in leaves?
+                <select name="q2" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Gas exchange">Gas exchange</option>
+                    <option value="Water absorption">Water absorption</option>
+                    <option value="Mineral transport">Mineral transport</option>
+                    <option value="Food storage">Food storage</option>
+                </select>
+            </li>
+            <li>What process do plants use to convert sunlight into food?
+                <select name="q3" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Photosynthesis">Photosynthesis</option>
+                    <option value="Respiration">Respiration</option>
+                    <option value="Transpiration">Transpiration</option>
+                    <option value="Digestion">Digestion</option>
+                </select>
+            </li>
+            <li>Which gas is released as a byproduct of photosynthesis?
+                <select name="q4" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Oxygen">Oxygen</option>
+                    <option value="Carbon dioxide">Carbon dioxide</option>
+                    <option value="Nitrogen">Nitrogen</option>
+                    <option value="Hydrogen">Hydrogen</option>
+                </select>
+            </li>
+            <li>Which part of the plant is mainly responsible for water absorption?
+                <select name="q5" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Roots">Roots</option>
+                    <option value="Leaves">Leaves</option>
+                    <option value="Stems">Stems</option>
+                    <option value="Flowers">Flowers</option>
+                </select>
+            </li>
+            <li>What is the primary source of energy for all living organisms?
+                <select name="q6" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Sun">Sun</option>
+                    <option value="Water">Water</option>
+                    <option value="Soil">Soil</option>
+                    <option value="Air">Air</option>
+                </select>
+            </li>
+            <li>Which process involves the loss of water vapor from plant leaves?
+                <select name="q7" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Transpiration">Transpiration</option>
+                    <option value="Photosynthesis">Photosynthesis</option>
+                    <option value="Respiration">Respiration</option>
+                    <option value="Absorption">Absorption</option>
+                </select>
+            </li>
+            <li>What type of nutrition do fungi exhibit?
+                <select name="q8" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Saprotrophic">Saprotrophic</option>
+                    <option value="Autotrophic">Autotrophic</option>
+                    <option value="Parasitic">Parasitic</option>
+                    <option value="Heterotrophic">Heterotrophic</option>
+                </select>
+            </li>
+            <li>Which organisms are known as autotrophs?
+                <select name="q9" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Plants">Plants</option>
+                    <option value="Animals">Animals</option>
+                    <option value="Fungi">Fungi</option>
+                    <option value="Bacteria">Bacteria</option>
+                </select>
+            </li>
+            <li>What is the chemical formula for photosynthesis?
+                <select name="q10" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="6CO2 + 6H2O → C6H12O6 + 6O2">6CO2 + 6H2O → C6H12O6 + 6O2</option>
+                    <option value="C6H12O6 + 6O2 → 6CO2 + 6H2O">C6H12O6 + 6O2 → 6CO2 + 6H2O</option>
+                    <option value="CO2 + H2O → C6H12O6 + O2">CO2 + H2O → C6H12O6 + O2</option>
+                    <option value="C6H12O6 + O2 → CO2 + H2O">C6H12O6 + O2 → CO2 + H2O</option>
+                </select>
+            </li>
+            <li>What is the main nutrient that plants absorb from the soil?
+                <select name="q11" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Nitrogen">Nitrogen</option>
+                    <option value="Oxygen">Oxygen</option>
+                    <option value="Carbon dioxide">Carbon dioxide</option>
+                    <option value="Hydrogen">Hydrogen</option>
+                </select>
+            </li>
+            <li>Which plant structure is responsible for transporting water and nutrients?
+                <select name="q12" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Xylem">Xylem</option>
+                    <option value="Phloem">Phloem</option>
+                    <option value="Stomata">Stomata</option>
+                    <option value="Chloroplast">Chloroplast</option>
+                </select>
+            </li>
+            <li>What term describes the relationship between fungi and plants where both benefit?
+                <select name="q13" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Symbiosis">Symbiosis</option>
+                    <option value="Parasitism">Parasitism</option>
+                    <option value="Commensalism">Commensalism</option>
+                    <option value="Predation">Predation</option>
+                </select>
+            </li>
+            <li>What is the primary function of chlorophyll in plants?
+                <select name="q14" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Absorb light energy">Absorb light energy</option>
+                    <option value="Store food">Store food</option>
+                    <option value="Transport nutrients">Transport nutrients</option>
+                    <option value="Release oxygen">Release oxygen</option>
+                </select>
+            </li>
+            <li>Which organism is an example of a parasitic plant?
+                <select name="q15" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Cuscuta">Cuscuta</option>
+                    <option value="Moss">Moss</option>
+                    <option value="Fern">Fern</option>
+                    <option value="Algae">Algae</option>
+                </select>
+            </li>
+            <li>How do plants obtain nitrogen?
+                <select name="q16" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="From soil bacteria">From soil bacteria</option>
+                    <option value="From air">From air</option>
+                    <option value="From water">From water</option>
+                    <option value="From sunlight">From sunlight</option>
+                </select>
+            </li>
+            <li>What role do guard cells play in plants?
+                <select name="q17" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Regulate the opening and closing of stomata">Regulate the opening and closing of stomata</option>
+                    <option value="Transport water">Transport water</option>
+                    <option value="Store nutrients">Store nutrients</option>
+                    <option value="Absorb sunlight">Absorb sunlight</option>
+                </select>
+            </li>
+            <li>Which substance is produced during photosynthesis that is essential for human survival?
+                <select name="q18" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Oxygen">Oxygen</option>
+                    <option value="Carbon dioxide">Carbon dioxide</option>
+                    <option value="Nitrogen">Nitrogen</option>
+                    <option value="Water">Water</option>
+                </select>
+            </li>
+            <li>What is the term for the process by which plants lose water vapor?
+                <select name="q19" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Transpiration">Transpiration</option>
+                    <option value="Photosynthesis">Photosynthesis</option>
+                    <option value="Respiration">Respiration</option>
+                    <option value="Absorption">Absorption</option>
+                </select>
+            </li>
+            <li>Which element is essential for the synthesis of proteins in plants?
+                <select name="q20" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Nitrogen">Nitrogen</option>
+                    <option value="Oxygen">Oxygen</option>
+                    <option value="Carbon">Carbon</option>
+                    <option value="Hydrogen">Hydrogen</option>
+                </select>
+            </li>
+        </ol>
+        <div class="timer" id="timer-inline">15:00</div>
+        <div class="form-group">
+            <button type="submit" class="submit-button">
+                <img src="https://i0.wp.com/thelifenavigator.com/wp-content/uploads/2024/07/DALL%C2%B7E-2024-07-18-22.59.32-A-golden-globe-with-a-blue-and-gold-globe-on-a-metallic-background.-Below-the-globe-is-a-large-button-with-the-text-Submit-Quiz-in-a-large-font-emb.webp?w=1024&ssl=1" alt="Submit">
+                Submit
+            </button>
+        </div>
+        <div class="form-group hidden" id="total-marks">
+            <label for="marks">Total Marks:</label>
+            <input type="text" id="marks" name="marks" readonly>
+        </div>
+    </form>
+</div>
+
+<div class="result-window" id="result-window">
+    <button class="close-button" onclick="closeResultWindow()">Close</button>
+    <h2 class="bold">Your Results</h2>
+    <p class="bold" id="student-info"></p>
+    <p class="bold">Your score is: <span id="score"></span></p>
+    <p class="bold">Time taken: <span id="time-taken"></span></p>
+    <h3>Performance Graph</h3>
+    <canvas id="performance-chart" style="max-width: 500px; max-height: 300px; background-color: white;"></canvas>
+    <div class="explanation">
+        <h3>Explanation of Marks Distribution</h3>
+        <p id="basic-level-explanation"></p>
+        <p id="intermediate-level-explanation"></p>
+        <p id="advanced-level-explanation"></p>
+        <h3>Recommendations</h3>
+        <p id="recommendations"></p>
+        <h3>Correct Answers</h3>
+        <ul id="correct-answers"></ul>
+    </div>
+    <button class="button" onclick="downloadPDF()">Download Report</button>
+</div>
+
+<script>
+    let timer;
+    let startTime;
+    let studentInfo = {};
+    let currentUsername;
+
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const terms = document.getElementById('terms').checked;
+        const errorMessage = document.getElementById('errorMessage');
+
+        errorMessage.textContent = '';
+
+        if (!terms) {
+            errorMessage.textContent = 'You must accept the terms and conditions.';
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', password);
+
+        fetch('https://script.google.com/macros/s/AKfycbyxjzKFO99pyrz-1sJ3RjdACaBTHnNsLP8MHN42iq5DeBpkb0aH3iy4jV3Vf6pvEU4g8Q/exec', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.result === 'success') {
+                studentInfo = data.studentInfo;
+                currentUsername = username;
+                document.querySelector('.container').style.display = 'none';
+                document.getElementById('startTestButton').style.display = 'block';
+            } else {
+                errorMessage.textContent = 'Invalid username or password. Please try again.';
+            }
+        })
+        .catch(error => {
+            console.error('Error!', error.message);
+            errorMessage.textContent = 'There was an error logging in. Please try again.';
+        });
+    });
+
+    function startTest() {
+        document.querySelector('.instructions').style.display = 'none';
+        document.getElementById('questions-section').style.display = 'block';
+
+        timer = 15 * 60;
+        startTime = Date.now();
+        document.getElementById('timer').style.display = 'block';
+        document.getElementById('timer-inline').style.display = 'block';
+        const interval = setInterval(() => {
+            timer--;
+            let minutes = Math.floor(timer / 60);
+            let seconds = timer % 60;
+            document.getElementById('timer').textContent = `Time Remaining: ${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            document.getElementById('timer-inline').textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (timer <= 0) {
+                clearInterval(interval);
+                document.getElementById('science-quiz-form').submit();
+            }
+        }, 1000);
+    }
+
+    function submitTest(event) {
+        event.preventDefault();
+
+        const totalMarks = calculateScore();
+        document.getElementById('marks').value = totalMarks;
+        document.getElementById('total-marks').classList.remove('hidden');
+
+        // Send total marks to the server
+        const formData = new FormData();
+        formData.append('username', currentUsername);
+        formData.append('totalMarks', totalMarks);
+
+        fetch('https://script.google.com/macros/s/AKfycbyxjzKFO99pyrz-1sJ3RjdACaBTHnNsLP8MHN42iq5DeBpkb0aH3iy4jV3Vf6pvEU4g8Q/exec', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.result === 'success') {
+                displayResult(totalMarks);
+            } else {
+                alert('There was an error submitting your marks. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error!', error.message);
+            alert('There was an error submitting your marks. Please try again.');
+        });
+    }
+
+    function displayResult(totalMarks) {
+        document.getElementById('score').innerText = totalMarks;
+
+        const duration = Math.floor((Date.now() - startTime) / 1000);
+        const minutesTaken = Math.floor(duration / 60);
+        const secondsTaken = duration % 60;
+        document.getElementById('time-taken').innerText = `${minutesTaken} minutes and ${secondsTaken} seconds`;
+
+        const { totalMarksBasic, totalMarksIntermediate, totalMarksAdvanced } = calculateLevelMarks();
+        const ctx = document.getElementById('performance-chart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Basic', 'Intermediate', 'Advanced'],
+                datasets: [{
+                    label: 'Correct Answers',
+                    data: [totalMarksBasic, totalMarksIntermediate, totalMarksAdvanced],
+                    backgroundColor: ['darkred', 'green', 'blue']
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const { correctBasic, correctIntermediate, correctAdvanced } = calculateLevelCorrectAnswers();
+
+        document.getElementById('basic-level-explanation').innerText = `You have attempted ${correctBasic.correct} number of basic questions correctly hence obtained ${totalMarksBasic} total marks in basic level.`;
+        document.getElementById('intermediate-level-explanation').innerText = `You have attempted ${correctIntermediate.correct} number of intermediate questions correctly hence obtained ${totalMarksIntermediate} total marks in intermediate level.`;
+        document.getElementById('advanced-level-explanation').innerText = `You have attempted ${correctAdvanced.correct} number of expert questions correctly hence obtained ${totalMarksAdvanced} total marks in expert level.`;
+
+        const recommendations = generateRecommendations(correctBasic.correct, correctIntermediate.correct, correctAdvanced.correct);
+        document.getElementById('recommendations').innerText = recommendations;
+
+        const correctAnswersList = generateCorrectAnswersList();
+        document.getElementById('correct-answers').innerHTML = correctAnswersList;
+
+        document.getElementById('student-info').innerText = `Father's Name: ${studentInfo.fatherName}, Student's Name: ${studentInfo.studentName}, School Name: ${studentInfo.schoolName}`;
+
+        document.getElementById('result-window').style.display = 'block';
+    }
+
+    function closeResultWindow() {
+        document.getElementById('result-window').style.display = 'none';
+    }
+
+    function calculateScore() {
+        const form = document.forms['science-quiz-form'];
+        let totalMarks = 0;
+
+        const marksDistribution = [
+            3, 3, 3, 3, 3, 
+            3, 3, 3, 3, 3, 
+            2, 2, 2, 2, 2, 
+            1, 1, 1, 1, 1
+        ];
+
+        const correctAnswers = [
+            'Chlorophyll', 'Gas exchange', 'Photosynthesis', 'Oxygen', 'Roots',
+            'Sun', 'Transpiration', 'Saprotrophic', 'Plants', '6CO2 + 6H2O → C6H12O6 + 6O2',
+            'Nitrogen', 'Xylem', 'Symbiosis', 'Absorb light energy', 'Cuscuta',
+            'From soil bacteria', 'Regulate the opening and closing of stomata', 'Oxygen', 'Transpiration', 'Nitrogen'
+        ];
+
+        for (let i = 0; i < 20; i++) {
+            if (form[`q${i + 1}`].value === correctAnswers[i]) {
+                totalMarks += marksDistribution[i];
+            }
+        }
+
+        return totalMarks;
+    }
+
+    function calculateLevelMarks() {
+        const form = document.forms['science-quiz-form'];
+        let totalMarksBasic = 0;
+        let totalMarksIntermediate = 0;
+        let totalMarksAdvanced = 0;
+
+        const correctAnswers = [
+            'Chlorophyll', 'Gas exchange', 'Photosynthesis', 'Oxygen', 'Roots',
+            'Sun', 'Transpiration', 'Saprotrophic', 'Plants', '6CO2 + 6H2O → C6H12O6 + 6O2',
+            'Nitrogen', 'Xylem', 'Symbiosis', 'Absorb light energy', 'Cuscuta',
+            'From soil bacteria', 'Regulate the opening and closing of stomata', 'Oxygen', 'Transpiration', 'Nitrogen'
+        ];
+
+        for (let i = 0; i < 10; i++) {
+            if (form[`q${i + 1}`].value === correctAnswers[i]) {
+                totalMarksAdvanced += 3;
+            }
+        }
+
+        for (let i = 10; i < 15; i++) {
+            if (form[`q${i + 1}`].value === correctAnswers[i]) {
+                totalMarksIntermediate += 2;
+            }
+        }
+
+        for (let i = 15; i < 20; i++) {
+            if (form[`q${i + 1}`].value === correctAnswers[i]) {
+                totalMarksBasic += 1;
+            }
+        }
+
+        return { totalMarksBasic, totalMarksIntermediate, totalMarksAdvanced };
+    }
+
+    function calculateLevelCorrectAnswers() {
+        const form = document.forms['science-quiz-form'];
+        let correctBasic = { correct: 0 };
+        let correctIntermediate = { correct: 0 };
+        let correctAdvanced = { correct: 0 };
+
+        const correctAnswers = [
+            'Chlorophyll', 'Gas exchange', 'Photosynthesis', 'Oxygen', 'Roots',
+            'Sun', 'Transpiration', 'Saprotrophic', 'Plants', '6CO2 + 6H2O → C6H12O6 + 6O2',
+            'Nitrogen', 'Xylem', 'Symbiosis', 'Absorb light energy', 'Cuscuta',
+            'From soil bacteria', 'Regulate the opening and closing of stomata', 'Oxygen', 'Transpiration', 'Nitrogen'
+        ];
+
+        for (let i = 0; i < 10; i++) {
+            if (form[`q${i + 1}`].value === correctAnswers[i]) {
+                correctAdvanced.correct++;
+            }
+        }
+
+        for (let i = 10; i < 15; i++) {
+            if (form[`q${i + 1}`].value === correctAnswers[i]) {
+                correctIntermediate.correct++;
+            }
+        }
+
+        for (let i = 15; i < 20; i++) {
+            if (form[`q${i + 1}`].value === correctAnswers[i]) {
+                correctBasic.correct++;
+            }
+        }
+
+        return { correctBasic, correctIntermediate, correctAdvanced };
+    }
+
+    function generateRecommendations(correctBasic, correctIntermediate, correctAdvanced) {
+        let recommendations = '';
+
+        if (correctBasic < 5) {
+            recommendations += 'Focus on understanding the basic concepts of plant biology.\n';
+        }
+        if (correctIntermediate < 3) {
+            recommendations += 'Review the intermediate level topics such as nutrient absorption and transport.\n';
+        }
+        if (correctAdvanced < 3) {
+            recommendations += 'Pay more attention to advanced topics like photosynthesis and cellular processes.\n';
+        }
+
+        return recommendations;
+    }
+
+    function generateCorrectAnswersList() {
+        const correctAnswers = [
+            '1. Chlorophyll is responsible for the green color in plants.',
+            '2. The main function of stomata in leaves is <b>Gas exchange</b>.',
+            '3. Plants use the process of <b>Photosynthesis</b> to convert sunlight into food.',
+            '4. <b>Oxygen</b> is released as a byproduct of photosynthesis.',
+            '5. <b>Roots</b> are mainly responsible for water absorption in plants.',
+            '6. The primary source of energy for all living organisms is the <b>Sun</b>.',
+            '7. <b>Transpiration</b> involves the loss of water vapor from plant leaves.',
+            '8. Fungi exhibit <b>Saprotrophic</b> nutrition.',
+            '9. <b>Plants</b> are known as autotrophs.',
+            '10. The chemical formula for photosynthesis is 6CO2 + 6H2O → C6H12O6 + 6O2.',
+            '11. <b>Nitrogen</b> is the main nutrient that plants absorb from the soil.',
+            '12. <b>Xylem</b> is responsible for transporting water and nutrients in plants.',
+            '13. The relationship between fungi and plants where both benefit is called <b>symbiosis</b>.',
+            '14. The primary function of chlorophyll in plants is to <b>absorb light energy</b>.',
+            '15. <b>Cuscuta</b> is an example of a parasitic plant.',
+            '16. Plants obtain nitrogen from <b>soil bacteria</b>.',
+            '17. <b>Guard cells</b> regulate the opening and closing of stomata in plants.',
+            '18. <b>Oxygen</b>, produced during photosynthesis, is essential for human survival.',
+            '19. The process by which plants lose water vapor is called <b>transpiration</b>.',
+            '20. <b>Nitrogen</b> is essential for the synthesis of proteins in plants.'
+        ];
+
+        return correctAnswers.map(answer => `<li>${answer}</li>`).join('');
+    }
+
+    function downloadPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        doc.setFont('Times New Roman');
+        doc.setFontSize(20);
+        doc.setTextColor('#00008B');
+        doc.text('Report on Test Performance', 105, 20, null, null, 'center');
+        
+        doc.setFontSize(14);
+        doc.setTextColor('#000000');
+        doc.text(`Father's Name: ${studentInfo.fatherName}`, 10, 30);
+        doc.text(`Student's Name: ${studentInfo.studentName}`, 10, 40);
+        doc.text(`School Name: ${studentInfo.schoolName}`, 10, 50);
+        doc.text('Your score is: ' + document.getElementById('score').innerText, 10, 60);
+        doc.text('Time taken: ' + document.getElementById('time-taken').innerText, 10, 70);
+
+        const canvas = document.getElementById('performance-chart');
+        const canvasImg = canvas.toDataURL('image/png', 1.0);
+        doc.addImage(canvasImg, 'PNG', 10, 80, 180, 80);
+
+        const basicExplanation = document.getElementById('basic-level-explanation').innerText;
+        const intermediateExplanation = document.getElementById('intermediate-level-explanation').innerText;
+        const advancedExplanation = document.getElementById('advanced-level-explanation').innerText;
+        
+        doc.text('Explanation of Marks Distribution', 10, 180);
+        doc.text(basicExplanation, 10, 190);
+        doc.text(intermediateExplanation, 10, 200);
+        doc.text(advancedExplanation, 10, 210);
+
+        const recommendations = document.getElementById('recommendations').innerText;
+        doc.text('Recommendations:', 10, 220);
+        doc.text(recommendations, 10, 230);
+
+        const correctAnswers = generateCorrectAnswersList();
+        doc.text('Correct Answers:', 10, 240);
+        doc.text(correctAnswers, 10, 250);
+
+        const protection = {
+            permissions: {
+                printing: 'highResolution',
+                modifying: 'none',
+                copying: 'none',
+                annotating: 'none',
+                fillingForms: 'none',
+                contentAccessibility: 'none',
+                documentAssembly: 'none'
+            }
+        };
+        doc.setProperties(protection);
+
+        doc.save('Test_Report.pdf');
+    }
+</script>
+
+</body>
+</html>
